@@ -18,13 +18,13 @@ Write the PID loop from scratch without using the WPI or CTRE libraries for PID
 - Mess around with the gains for P, I , & D and see how changing each one affects your output
 
 **Additional Information:** 
-Robot Mass: 150 pounds
-Wheel radius: 3 inches
-Track Width: 20 inches
-Gear Ratio: 10:1. (10 rotations of the motor = 1 rotation of the wheels)
-Ticks/Revolution: 4096 (ticks are the unit of the encoder, 4096 encoder ticks = 1 rotation)
-Moment of Inertia: 7.469  
-Drivetrain Motors: 2 Falcon 500's on each side. 
+- Robot Mass: 150 pounds
+- Wheel radius: 3 inches
+- Track Width: 20 inches
+- Gear Ratio: 10:1. (10 rotations of the motor = 1 rotation of the wheels)
+- Ticks/Revolution: 4096 (ticks are the unit of the encoder, 4096 encoder ticks = 1 rotation)
+- Moment of Inertia: 7.469  
+- Drivetrain Motors: 2 Falcon 500's on each side. 
 
 *Make sure to pay attention to units* 
 
