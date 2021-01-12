@@ -49,7 +49,7 @@ public class Robot extends TimedRobot {
   //heading: 0.001 rad
   //l and r velocity: 0.1 m/s
   //l and r position: 0.005 m
-  private Vector<N7> STANDARD_DEVIATIONS = VecBuilder.fill(0.001, 0.001, 0.001, 0.1, 0.1, 0.005, 0.005);
+  private static final Vector<N7> STANDARD_DEVIATIONS = VecBuilder.fill(0.001, 0.001, 0.001, 0.1, 0.1, 0.005, 0.005);
 
   private Encoder leftEncoder = new Encoder(0, 1);
   private Encoder rightEncoder = new Encoder(2, 3);
