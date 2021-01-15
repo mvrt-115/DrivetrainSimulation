@@ -5,6 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PWMTalonFX;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
@@ -59,9 +60,11 @@ public class Robot extends TimedRobot {
 
   private DifferentialDrivetrainSim driveSim = new DifferentialDrivetrainSim(motors, GEAR_REDUCTION, MOMENT_OF_INERTIA, ROBOT_MASS, WHEEL_RADIUS, TRACK_WIDTH, STANDARD_DEVIATIONS);
 
+  private PWMTalonFX motor = new PWMTalonFX(0);
+
   private double sumErrors, lastError, lastTime;
 
-  private static final double kP = 0.45, kD = 0.14, kI = 0.00001;
+  private static final double kP = 0.6, kD = 0.15, kI = 0.00006;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -125,7 +128,9 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putNumber("Output", output);
 
-    driveSim.setInputs(output * RobotController.getInputVoltage(), output * RobotController.getInputVoltage());
+    motor.setVoltage(output);
+
+    driveSim.setInputs(motor.get() * RobotController.getInputVoltage(), motor.get() * RobotController.getInputVoltage());
 
     lastError = error;
     lastTime = time;
