@@ -34,9 +34,9 @@ public class Robot extends TimedRobot {
   private final double TRACK_WIDTH = 20; // 20 inches
   private final int TICKS = 4096;
 
-  private final double kP = 0.55;
-  private final double kI = 0.00001;
-  private final double kD = 0.05;
+  private final double kP = 0.5;
+  private final double kI = 0.0005;
+  private final double kD = 0.01;
 
   private Command m_autonomousCommand;
 
@@ -85,7 +85,7 @@ public class Robot extends TimedRobot {
     lMotorOutput = 0;
     rMotorOutput = 0;
 
-    setPoint = 10;
+    setPoint = 3;
     errorSum = 0;
     lastError = 0;
     lastTimestamp = Timer.getFPGATimestamp();
