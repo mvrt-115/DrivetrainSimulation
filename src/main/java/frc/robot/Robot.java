@@ -34,9 +34,9 @@ public class Robot extends TimedRobot {
   private final double TRACK_WIDTH = 20; // 20 inches
   private final int TICKS = 4096;
 
-  private final double kP = 0.5;
+  private final double kP = 0.55;
   private final double kI = 0.0005;
-  private final double kD = 0.01;
+  private final double kD = 0.02;
 
   private Command m_autonomousCommand;
 
@@ -78,7 +78,7 @@ public class Robot extends TimedRobot {
     );
 
     lEncoder = new Encoder(0, 1);
-    rEncoder = new Encoder(2, 3);
+    rEncoder = new Encoder(2, 3, true, EncodingType.k4X);
     lEncoderSim = new EncoderSim(lEncoder);
     rEncoderSim = new EncoderSim(rEncoder);
 
@@ -90,8 +90,8 @@ public class Robot extends TimedRobot {
     lastError = 0;
     lastTimestamp = Timer.getFPGATimestamp();
 
-    lEncoder.setDistancePerPulse(2 * Math.PI * WHEEL_RADIUS / TICKS);
-    rEncoder.setDistancePerPulse(2 * Math.PI * WHEEL_RADIUS / TICKS);
+    lEncoder.setDistancePerPulse(2 * Math.PI * WHEEL_RADIUS / TICKS / GEAR_RATIO);
+    rEncoder.setDistancePerPulse(-2 * Math.PI * WHEEL_RADIUS / TICKS / GEAR_RATIO);
   }
 
   /**
