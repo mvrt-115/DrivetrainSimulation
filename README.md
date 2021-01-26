@@ -29,5 +29,3 @@ Write the PID loop from scratch without using the WPI or CTRE libraries for PID
 *Make sure to pay attention to units* 
 
 Create a branch of this repository with your name as the branch title. To turn your code in, make a commit titled "DONE" in your branch. 
-
-

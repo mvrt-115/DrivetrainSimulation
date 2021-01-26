@@ -28,7 +28,7 @@ public class Robot extends TimedRobot {
 
 
 
-  private Encoder encoder;    
+  private Encoder encoder;      
   private double motorOutput;   //motor Output from -1 to 1
   private double target; 
 
@@ -49,6 +49,7 @@ public class Robot extends TimedRobot {
   private DCMotor dtMotors;
   private EncoderSim encoderSim;  
   private DifferentialDrivetrainSim drivetrainSim;
+
 
 
 
@@ -95,7 +96,11 @@ public class Robot extends TimedRobot {
     }
   }
 
- 
+
+  double integralLimit = 1; // 1 meter
+  double errorSum;
+  double lastError = 0;
+  double lastTimeStamp = 0; 
 
   public void autonomousPeriodic() {
 
@@ -106,6 +111,7 @@ public class Robot extends TimedRobot {
     double dt = Timer.getFPGATimestamp() - lastTimeStamp;   // Should be approximately 0.02s
     double errorRate = (error - lastError)/ dt;
 
+    // This is an Integral Limit, will only add the error if the error is less than 1 meter
     if(error < 1 ){
       errorSum += error * dt;
     }
@@ -135,10 +141,6 @@ public class Robot extends TimedRobot {
     }
   }
 
-  double integralLimit = 1; // 1 meter
-  double errorSum;
-  double lastError = 0;
-  double lastTimeStamp = 0;
 
   public void teleopPeriodic() {
     
